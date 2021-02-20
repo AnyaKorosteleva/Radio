@@ -2,107 +2,51 @@ package ru.netology.domain;
 
 public class Radio {
     String name;
-    private int channel;
+
     private int currentChannel;
-    private int volume;
-    private int сurrentVolume;
-    int next = 1;
-    int prev = -1;
-    int plus = 1;
-    int minus = -1;
+    private int currentVolume;
     boolean on;
+    int maxChannel = 9;
+    int minChannel = 0;
+    int maxVolume = 10;
+    int minVolume = 0;
 
-    public String getName() {
-        return name;
+    public void nextChannel() {
+        if (currentChannel < maxChannel)
+            currentChannel++;
+        if (currentChannel == maxChannel)
+            currentChannel = minChannel;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void prevChannel() {
+        if(currentChannel > minChannel)
+            currentChannel--;
+        if(currentChannel == minChannel)
+            currentChannel = maxChannel;
     }
 
-    public int getChannel() {
-        return channel;
+    public void plusVolume() {
+        if (currentVolume < maxVolume)
+            currentVolume++;
     }
-
-    public void setChannel(int channel) {
-        this.channel = channel;
+    public void minusVolume() {
+        if (currentVolume > minVolume)
+            currentVolume--;
     }
-
     public int getCurrentChannel() {
         return currentChannel;
     }
 
     public void setCurrentChannel(int currentChannel) {
-        if (currentChannel > 9) {
-            this.currentChannel = 0;
-        }
-        if (currentChannel < 0) {
-            this.currentChannel = 9;
-        }
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
+        this.currentChannel = currentChannel;
     }
 
     public int getCurrentVolume() {
-        return сurrentVolume;
+        return currentVolume;
     }
 
-    public void setCurrentVolume(int getCurrentVolume) {
-        if (getCurrentVolume > 10) {
-        this.сurrentVolume = 10;
-        }
-        if (currentChannel < 0) {
-            this.currentChannel = 0;
-        }
-        this.currentChannel = getCurrentVolume;
+    public void setCurrentVolume(int currentVolume) {
+        this.currentVolume = currentVolume;
     }
 
-    public int getNext() {
-        return next;
-    }
-
-    public void setNext(int next) {
-        this.next = next;
-    }
-
-    public int getPrev() {
-        return prev;
-    }
-
-    public void setPrev(int prev) {
-        this.prev = prev;
-    }
-
-    public int getPlus() {
-        return plus;
-    }
-
-    public void setPlus(int plus) {
-        this.plus = plus;
-    }
-
-    public int getMinus() {
-        return minus;
-    }
-
-    public void setMinus(int minus) {
-        this.minus = minus;
-    }
-
-    public boolean isOn() {
-        return on;
-    }
-
-    public void setOn(boolean on) {
-        this.on = on;
-    }
-
-    public void setCurrentChannel() {
-    }
 }
