@@ -2,42 +2,51 @@ package ru.netology.domain;
 
 public class Radio {
     String name;
-
     private int currentChannel;
     private int currentVolume;
-    boolean on;
-    int maxChannel = 9;
-    int minChannel = 0;
-    int maxVolume = 10;
-    int minVolume = 0;
+    private boolean on;
+    private int maxChannel = 9;
+    private int minChannel = 0;
+    private int maxVolume = 10;
+    private int minVolume = 0;
 
     public void nextChannel() {
-        if (currentChannel < maxChannel)
-            currentChannel++;
-        if (currentChannel == maxChannel)
-            currentChannel = minChannel;
+        this.currentChannel++;
+        if (this.currentChannel > maxChannel) {
+            this.currentChannel = minChannel;
+        }
     }
 
     public void prevChannel() {
-        if(currentChannel > minChannel)
-            currentChannel--;
-        if(currentChannel == minChannel)
-            currentChannel = maxChannel;
+        this.currentChannel--;
+        if (this.currentChannel < minChannel)
+            this.currentChannel = maxChannel;
     }
 
     public void plusVolume() {
-        if (currentVolume < maxVolume)
-            currentVolume++;
+        this.currentVolume++;
+        if (this.currentVolume > maxVolume)
+            this.currentVolume = maxVolume;
     }
+
     public void minusVolume() {
-        if (currentVolume > minVolume)
-            currentVolume--;
+        this.currentVolume--;
+        if (this.currentVolume < minVolume) {
+            this.currentVolume = minVolume;
+        }
     }
+
     public int getCurrentChannel() {
         return currentChannel;
     }
 
     public void setCurrentChannel(int currentChannel) {
+        if (currentChannel < minChannel) {
+            return;
+        }
+        if (currentChannel > maxChannel) {
+            return;
+        }
         this.currentChannel = currentChannel;
     }
 
@@ -46,7 +55,12 @@ public class Radio {
     }
 
     public void setCurrentVolume(int currentVolume) {
+        if (currentVolume < minVolume) {
+            return;
+        }
+        if (currentVolume > maxVolume) {
+            return;
+        }
         this.currentVolume = currentVolume;
     }
-
 }
