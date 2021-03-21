@@ -5,10 +5,14 @@ public class Radio {
     private int currentChannel;
     private int currentVolume;
     private boolean on;
-    private int maxChannel = 9;
+    private int maxChannel = 10;
     private int minChannel = 0;
-    private int maxVolume = 10;
+    private int maxVolume = 100;
     private int minVolume = 0;
+
+    public Radio(int maxChannel) {
+        this.maxChannel = maxChannel;
+    }
 
     public void nextChannel() {
         this.currentChannel++;

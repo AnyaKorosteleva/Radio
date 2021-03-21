@@ -5,18 +5,18 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
-    Radio radio = new Radio();
+    Radio radio = new Radio(29);
 
     @Test
     public void shouldNextCurrentChannel() {
-        radio.setCurrentChannel(8);
+        radio.setCurrentChannel(15);
         radio.nextChannel();
-        assertEquals(9, radio.getCurrentChannel());
+        assertEquals(16, radio.getCurrentChannel());
     }
 
     @Test
     public void shouldNextMaxCurrentChannel() {
-        radio.setCurrentChannel(9);
+        radio.setCurrentChannel(29);
         radio.nextChannel();
         assertEquals(0, radio.getCurrentChannel());
     }
@@ -32,7 +32,7 @@ class RadioTest {
     public void shouldPrevMinCurrentChannel() {
         radio.setCurrentChannel(0);
         radio.prevChannel();
-        assertEquals(9, radio.getCurrentChannel());
+        assertEquals(29, radio.getCurrentChannel());
     }
 
     @Test
@@ -43,16 +43,16 @@ class RadioTest {
 
     @Test
     public void shouldNextCurrentVolume() {
-        radio.setCurrentVolume(5);
+        radio.setCurrentVolume(27);
         radio.plusVolume();
-        assertEquals(6, radio.getCurrentVolume());
+        assertEquals(28, radio.getCurrentVolume());
     }
 
     @Test
     public void shouldNextMaxCurrentVolume() {
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.plusVolume();
-        assertEquals(10, radio.getCurrentVolume());
+        assertEquals(100, radio.getCurrentVolume());
     }
 
     @Test
@@ -68,6 +68,7 @@ class RadioTest {
         radio.minusVolume();
         assertEquals(0, radio.getCurrentVolume());
     }
+
     @Test
     public void shouldSetChannelUnderMin () {
         radio.setCurrentChannel(5);
@@ -78,7 +79,7 @@ class RadioTest {
     @Test
     public void shouldSetChannelUpperMax () {
         radio.setCurrentChannel(5);
-        radio.setCurrentChannel(11);
+        radio.setCurrentChannel(110);
         assertEquals(5, radio.getCurrentChannel());
     }
 
@@ -92,7 +93,7 @@ class RadioTest {
     @Test
     public void shouldSetVolumeUpperMax () {
         radio.setCurrentVolume(5);
-        radio.setCurrentVolume(11);
+        radio.setCurrentVolume(110);
         assertEquals(5, radio.getCurrentVolume());
     }
 }
